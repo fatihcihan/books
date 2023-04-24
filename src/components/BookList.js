@@ -1,15 +1,15 @@
 import React from 'react';
-import './BookList.css'
-import Book from './Book'
+import './BookList.css';
+import Book from './Book';
+import BookContext from '../contexts/BookContext';
 
 class BookList extends React.Component {
 
+    static contextType = BookContext;
+
     render() {
-        // console.log(this.props.books);
-        const bookList = this.props.books.map((book, i) => {
-            return <Book book={book}
-                key={i} />
-        })
+        const books = this.context;
+
         return (
             <section className="page-section bg-light" id="portfolio">
                 <div className="container">
@@ -18,7 +18,10 @@ class BookList extends React.Component {
                         <h3 className="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
                     </div>
                     <div className="row">
-                        {bookList}
+                        {books.map((book, i) => {
+                            return <Book book={book}
+                                key={i} />
+                        })}
                     </div>
                 </div>
             </section>
@@ -27,4 +30,5 @@ class BookList extends React.Component {
 }
 
 export default BookList;
+
 
