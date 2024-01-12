@@ -1,6 +1,8 @@
 import React from 'react';
+import BookList from './BookList'
 
 class App extends React.Component {
+
     state = {
         books: [
             {
@@ -62,8 +64,9 @@ class App extends React.Component {
 
         ]
     }
+
     render() {
-        return <div>Books App</div>
+        return <div><BookList books={this.state.books} /></div>
     }
 }
 
