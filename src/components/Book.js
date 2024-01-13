@@ -1,4 +1,5 @@
 import React from 'react';
+import './Book.css';
 
 class Book extends React.Component {
 
@@ -10,11 +11,11 @@ class Book extends React.Component {
                         <div className="portfolio-hover">
                             <div className="portfolio-hover-content"><i className="fas fa-plus fa-3x"></i></div>
                         </div>
-                        <img className="img-fluid" src="assets/img/portfolio/1.jpg" alt="..." />
+                        <img className="img-fluid" src={this.props.book.imageURL} alt="..." />
                     </a>
                     <div className="portfolio-caption">
-                        <div className="portfolio-caption-heading">Threads</div>
-                        <div className="portfolio-caption-subheading text-muted">Illustration</div>
+                        <div className="portfolio-caption-heading">{this.props.book.title}</div>
+                        <div className="portfolio-caption-subheading text-muted">{this.props.book.author}</div>
                     </div>
                 </div>
             </div>
