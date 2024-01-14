@@ -13,32 +13,33 @@ class BookList extends React.Component {
         // const books = this.context;
 
         return (
-            <ThemeContext.Consumer>{
-                (contextTheme) => (
-                    <BookContext.Consumer>                        
-                        {
-                            value => {
-                                console.log(value)
-                                return (
-                                    < section className="page-section bg-light" id="portfolio" >
-                                        <div className="container">
-                                            <div className="text-center">
-                                                <h2 className="section-heading text-uppercase">Book App</h2>
-                                                <h3 className="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
-                                            </div>
-                                            <div className="row">
-                                                {value.books.map((book, i) => {
-                                                    return <Book book={book}
-                                                        key={i} />
-                                                })}
-                                            </div>
-                                        </div>
-                                    </section>
-                                )
-                            }
-                        }
-                    </BookContext.Consumer >
-                )}
+            <ThemeContext.Consumer>{(contextTheme) => (
+                <BookContext.Consumer>
+                    {contextBook => {
+                        const { books } = contextBook;
+                        const { isDarkTheme, dark, light } = contextTheme;
+                        const theme = isDarkTheme ? dark : light;
+                        console.log(contextBook)
+                        return (
+                            < section className="page-section bg-light" id="portfolio" >
+                                <div className="container">
+                                    <div className="text-center">
+                                        <h2 className="section-heading text-uppercase">Book App</h2>
+                                        <h3 className="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+                                    </div>
+                                    <div className="row">
+                                        {books.map((book, i) => {
+                                            return <Book book={book}
+                                                key={i} />
+                                        })}
+                                    </div>
+                                </div>
+                            </section>
+                        )
+                    }
+                    }
+                </BookContext.Consumer >
+            )}
             </ThemeContext.Consumer>
         )
     }
