@@ -16,12 +16,13 @@ class BookList extends React.Component {
             <ThemeContext.Consumer>{(contextTheme) => (
                 <BookContext.Consumer>
                     {contextBook => {
+                        console.log(contextTheme,'context theme');
                         const { books } = contextBook;
                         const { isDarkTheme, dark, light } = contextTheme;
                         const theme = isDarkTheme ? dark : light;
-                        console.log(contextBook)
+                        console.log(theme,'theme')
                         return (
-                            < section className="page-section bg-light" id="portfolio" >
+                            < section className="page-section" style={{ background: theme.bg, color: theme.txt }} id="portfolio" >
                                 <div className="container">
                                     <div className="text-center">
                                         <h2 className="section-heading text-uppercase">Book App</h2>
