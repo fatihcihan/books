@@ -3,14 +3,12 @@ import './Book.css';
 import { ThemeContext } from '../contexts/ThemeContext'
 
 class Book extends React.Component {
-
     render() {
         return (
             <ThemeContext.Consumer>{
                 (contextTheme) => {
                     const { isDarkTheme, dark, light } = contextTheme;
                     const theme = isDarkTheme ? dark : light;
-                    console.log(theme, 'theme');
                     return (
                         <div className="col-lg-4 col-sm-6 mb-4">
                             <div className="portfolio-item">
