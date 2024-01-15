@@ -5,28 +5,22 @@ import { BookContext } from '../contexts/BookContext';
 import { ThemeContext } from '../contexts/ThemeContext';
 
 class BookList extends React.Component {
-    // We will use BookContext here
-    // static contextType = BookContext;
     render() {
-
-        // console.log(this.context, 'context');
-        // const books = this.context;
-
         return (
             <ThemeContext.Consumer>{(contextTheme) => (
                 <BookContext.Consumer>
                     {contextBook => {
-                        console.log(contextTheme,'context theme');
                         const { books } = contextBook;
-                        const { isDarkTheme, dark, light } = contextTheme;
+                        const { changeTheme, isDarkTheme, dark, light } = contextTheme;
                         const theme = isDarkTheme ? dark : light;
-                        console.log(theme,'theme')
                         return (
-                            < section className="page-section" style={{ background: theme.bg, color: theme.txt }} id="portfolio" >
+                            <section className="page-section" style={{ background: theme.bg, color: theme.txt }} id="portfolio" >
                                 <div className="container">
                                     <div className="text-center">
                                         <h2 className="section-heading text-uppercase">Book App</h2>
                                         <h3 className="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+                                        <button type='button' className='btn btn-sm btn-info' style={{ marginTop: '-70px' }}
+                                            onClick={changeTheme}>Change Theme</button>
                                     </div>
                                     <div className="row">
                                         {books.map((book, i) => {
@@ -47,20 +41,3 @@ class BookList extends React.Component {
 }
 
 export default BookList;
-
-/* 
-<section className="page-section bg-light" id="portfolio">
-                <div className="container">
-                    <div className="text-center">
-                        <h2 className="section-heading text-uppercase">Book App</h2>
-                        <h3 className="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
-                    </div>
-                    <div className="row">
-                        {books.map((book, i) => {
-                            return <Book book={book}
-                                key={i} />
-                        })}
-                    </div>
-                </div>
-            </section>
-  */
